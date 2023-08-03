@@ -10,26 +10,28 @@ export const TaskCard = ({ task }) => {
   return (
     <div>
       <div
-        style={{ background: "#202020", color: "white" }}
+        className="bg-gray-800 hover:bg-slate-600 cursor-pointer px-20 py-5 m-2 flex"
         onClick={() => router.push(`/edit/${task.id}`)}
       >
-        <h1>{task.title}</h1>
-        <button
-          onClick={(e) => {
-            // stopPropagation avisa que termian ahi el evento
-            e.stopPropagation();
-            const confirm = window.confirm("are you sure?");
-            if (confirm) {
-              deleteTask(task.id);
-              toast.success("task deleted successfully");
-            }
-          }}
-        >
-          delete
-        </button>
-        <p>{task.description}</p>
+        <div className="flex justify-between">
+          <h1>{task.title}</h1>
+          <button
+            onClick={(e) => {
+              // stopPropagation avisa que termian ahi el evento
+              e.stopPropagation();
+              const confirm = window.confirm("are you sure?");
+              if (confirm) {
+                deleteTask(task.id);
+                toast.success("task deleted successfully");
+              }
+            }}
+          >
+            delete
+          </button>
+        </div>
+        <p className="text-gray-300">{task.description}</p>
+        <span className="text-gray-400 text-xs">{task.id}</span>
       </div>
-      <br />
     </div>
   );
 };
