@@ -8,29 +8,41 @@ export const TaskCard = ({ task }) => {
   const { deleteTask } = useTasks();
 
   return (
-    <div>
-      <div
-        className="bg-gray-800 hover:bg-slate-600 cursor-pointer px-20 py-5 m-2 flex"
-        onClick={() => router.push(`/edit/${task.id}`)}
-      >
-        <div className="flex justify-between">
-          <h1>{task.title}</h1>
+    <div
+      className="flex md:flex-row cursor-pointer p-5 m-5"
+      style={{
+        borderRadius: "10px",
+        background: "#e1e0e0",
+        boxShadow: "20px 20px 60px #bebebe,-20px -20px 60px #ffffff",
+      }}
+    >
+      <div className="flex flex-col justify-between items-center w-full md:w-auto">
+        <h1 className="text-md text-black font-bold mb-1 md:mb-0 md:mr-4">
+          {task.title}
+        </h1>
+        <hr class="w-full h-0.5 mx-auto my-4 bg-gray-100 border-0 rounded md:my-5 dark:bg-gray-700" />
+        <p className="text-black text-sm">{task.description}</p>
+        <hr class="w-full h-0.5 mx-auto my-4 bg-gray-100 border-0 rounded md:my-5 dark:bg-gray-700" />
+        <div className="flex gap-2">
+          {" "}
           <button
+            className="bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+            onClick={() => router.push(`/edit/${task.id}`)}
+          >
+            Edit
+          </button>
+          <button
+            className="bg-red-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-red-700 rounded"
             onClick={(e) => {
-              // stopPropagation avisa que termian ahi el evento
               e.stopPropagation();
-              const confirm = window.confirm("are you sure?");
-              if (confirm) {
-                deleteTask(task.id);
-                toast.success("task deleted successfully");
-              }
+
+              deleteTask(task.id);
+              toast.success("Task deleted successfully");
             }}
           >
-            delete
+            Delete
           </button>
         </div>
-        <p className="text-gray-300">{task.description}</p>
-        <span className="text-gray-400 text-xs">{task.id}</span>
       </div>
     </div>
   );
