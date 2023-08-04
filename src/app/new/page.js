@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
-const boxShadowCss = {};
-
 const Page = ({ params }) => {
   const { tasks, createTask, updateTask } = useTasks();
 

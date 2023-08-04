@@ -1,4 +1,3 @@
-import React from "react";
 import NewFormPage from "../../new/page";
 
 // const page = ({ params }) => {
