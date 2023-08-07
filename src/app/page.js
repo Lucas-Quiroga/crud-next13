@@ -1,17 +1,23 @@
-"use client";
-import { useTasks } from "@/context/TaskContext";
+// "use client";
+// import { useTasks } from "@/context/TaskContext";
 import { TaskCard } from "../components/TaskCard";
+import { connectDB } from "@/utils/mongoose";
+import Task from "@/models/Task";
 
-function Page() {
-  const { tasks } = useTasks();
+async function loadTasksBD() {
+  connectDB();
+  const tasks = await Task.find();
+  return tasks;
+}
+
+async function Page() {
+  // const { tasks } = useTasks();
+  const tasks = await loadTasksBD();
 
   return (
-    <div
-      className="flex justify-center items-center"
-      style={{ flexWrap: "wrap" }}
-    >
+    <div>
       {tasks.map((task) => (
-        <TaskCard task={task} key={task.id} />
+        <TaskCard task={task} key={task._id} />
       ))}
     </div>
   );

@@ -1,11 +1,11 @@
 import React from "react";
-import { useRouter } from "next/navigation";
-import { useTasks } from "@/context/TaskContext";
+// import { useRouter } from "next/navigation";
+// import { useTasks } from "@/context/TaskContext";
 import { toast } from "react-hot-toast";
 
 export const TaskCard = ({ task }) => {
-  const router = useRouter();
-  const { deleteTask } = useTasks();
+  // const router = useRouter();
+  // const { deleteTask } = useTasks();
 
   return (
     <div
@@ -20,25 +20,25 @@ export const TaskCard = ({ task }) => {
         <h1 className="text-md text-black font-bold mb-1 md:mb-0 md:mr-4">
           {task.title}
         </h1>
-        <hr class="w-full h-0.5 mx-auto my-4 bg-gray-100 border-0 rounded md:my-5 dark:bg-gray-700" />
+        <hr className="w-full h-0.5 mx-auto my-4 bg-gray-100 border-0 rounded md:my-5 dark:bg-gray-700" />
         <p className="text-black text-sm">{task.description}</p>
-        <hr class="w-full h-0.5 mx-auto my-4 bg-gray-100 border-0 rounded md:my-5 dark:bg-gray-700" />
+        <hr className="w-full h-0.5 mx-auto my-4 bg-gray-100 border-0 rounded md:my-5 dark:bg-gray-700" />
         <div className="flex gap-2">
           {" "}
           <button
             className="bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-            onClick={() => router.push(`/edit/${task.id}`)}
+            // onClick={() => router.push(`/edit/${task._id}`)}
           >
             Edit
           </button>
           <button
             className="bg-red-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-red-700 rounded"
-            onClick={(e) => {
-              e.stopPropagation();
+            // onClick={(e) => {
+            //   e.stopPropagation();
 
-              deleteTask(task.id);
-              toast.success("Task deleted successfully");
-            }}
+            //   deleteTask(task._id);
+            //   toast.success("Task deleted successfully");
+            // }}
           >
             Delete
           </button>

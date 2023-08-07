@@ -1,6 +1,6 @@
 //codigo de servidor
 import { NextResponse } from "next/server";
-import connectDB from "../../../utils/mongoose";
+import { connectDB } from "@/utils/mongoose";
 
 export function GET() {
   connectDB();
