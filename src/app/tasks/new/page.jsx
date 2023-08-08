@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 
-const page = () => {
+const Page = () => {
   const [newTask, setNewTask] = useState({
     title: "",
     description: "",
@@ -128,4 +128,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
