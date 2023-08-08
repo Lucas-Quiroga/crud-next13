@@ -16,7 +16,7 @@ export async function POST(req) {
     const newTask = new Task(data);
     //guardarla en base de datos
     const saveTask = await newTask.save();
-    console.log(saveTask);
+    // console.log(saveTask);
     return NextResponse.json(saveTask);
   } catch (error) {
     return NextResponse.json(error.message, {
