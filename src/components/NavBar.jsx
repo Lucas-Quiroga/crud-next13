@@ -1,15 +1,16 @@
 "use client";
-import React from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect } from "react";
+import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
-import { useTasks } from "@/context/TaskContext";
+// import { useTasks } from "@/context/TaskContext";
 import Image from "next/image";
 import todoIcon from "../../public/todoIcon.jpg";
 
 export const NavBar = () => {
   const router = useRouter();
+  const params = useParams();
 
-  const { tasks } = useTasks();
+  // const { tasks } = useTasks();
 
   return (
     <header className="flex justify-between items-center bg-gray-800 px-28 py-3">
@@ -27,15 +28,12 @@ export const NavBar = () => {
           <div className="flex md:order-2">
             <button
               type="button"
-              onClick={() => router.push("/new")}
+              onClick={() => router.push("tasks/new")}
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              style={{ display: `${!params.id ? "" : "none"}` }}
             >
               Add tasks
             </button>
-          </div>
-          <div className="items-center text-white" id="navbar-sticky">
-            {tasks.length > 0 ? `${tasks.length} Tasks` : "No tasks found"}
-            <span></span>
           </div>
         </div>
       </nav>

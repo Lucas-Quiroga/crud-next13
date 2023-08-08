@@ -18,5 +18,4 @@ const taskSchema = new Schema(
     timestamps: true,
   }
 );
-
 export default models.Task || model("Task", taskSchema);

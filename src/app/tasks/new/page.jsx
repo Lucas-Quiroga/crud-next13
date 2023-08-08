@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect } from "react";
+import { useRouter, useParams } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 const page = () => {
   const [newTask, setNewTask] = useState({
@@ -9,28 +10,73 @@ const page = () => {
   });
 
   const router = useRouter();
+  const params = useParams();
+
+  async function getTaskDB() {
+    try {
+      const res = await fetch(`/api/tasks/${params.id}`);
+      const data = await res.json();
+      setNewTask({
+        title: data.title,
+        description: data.description,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   function handleChange(e) {
     setNewTask({ ...newTask, [e.target.name]: e.target.value });
   }
 
   async function createTask() {
-    const res = fetch("/api/tasks", {
-      method: "POST",
-      body: JSON.stringify(newTask),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
+    try {
+      const res = fetch("/api/tasks", {
+        method: "POST",
+        body: JSON.stringify(newTask),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
 
-    router.push("/");
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function updateTaskDB() {
+    try {
+      const res = await fetch(`/api/tasks/${params.id}`, {
+        method: "PUT",
+        body: JSON.stringify(newTask),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      const data = await res.json();
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    await createTask();
+    if (!params.id) {
+      await createTask();
+    } else {
+      updateTaskDB();
+    }
   }
+
+  useEffect(() => {
+    if (params.id) {
+      getTaskDB();
+    }
+  }, []);
 
   return (
     <div className="flex justify-center items-center h-full">
@@ -43,6 +89,9 @@ const page = () => {
         }}
         onSubmit={handleSubmit}
       >
+        <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-black">
+          {params.id ? "EDIT TASK" : "NEW TASK"}
+        </h2>
         <label className="block text-sm font-medium leading-6 text-black">
           Title
         </label>
@@ -51,6 +100,7 @@ const page = () => {
           placeholder="Write a title"
           name="title"
           onChange={handleChange}
+          value={newTask.title}
         />
         <label className="block text-sm font-medium leading-6 text-black">
           Description
@@ -60,9 +110,18 @@ const page = () => {
           placeholder="Write a description"
           name="description"
           onChange={handleChange}
+          value={newTask.description}
         />
-        <button className="flex w-full justify-center rounded-md bg-green-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-          Save
+        <button
+          type="submit"
+          className="flex w-full justify-center rounded-md bg-green-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          onClick={() => {
+            params.id
+              ? toast.success("Task update successfully")
+              : toast.success("Task create successfully");
+          }}
+        >
+          {params.id ? "Update" : "Create"}
         </button>
       </form>
     </div>
