@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { connectDB } from "@/utils/mongoose";
-import Task from "@/models/Task";
+import { connectDB } from "../../../utils/mongoose";
+import Task from "../../../models/Task";
 
 export async function GET() {
   connectDB();
@@ -12,6 +12,7 @@ export async function POST(req) {
   try {
     //recibir información del cliente
     const data = await req.json();
+
     //crear tarea
     const newTask = new Task(data);
     //guardarla en base de datos

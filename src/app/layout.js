@@ -2,8 +2,8 @@ import { Inter } from "next/font/google";
 import { TaskProvider } from "../context/TaskContext";
 import { NavBar } from "../components/NavBar";
 import { Toaster } from "react-hot-toast";
-import Layout from "@/components/Layout";
-import Providers from "@/components/Providers";
+import Layout from "../components/Layout";
+import Providers from "../components/Providers";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });

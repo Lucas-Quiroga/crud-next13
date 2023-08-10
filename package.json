@@ -23,6 +23,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/react": "18.2.20",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.27",

@@ -1,8 +1,8 @@
 // "use client";
 // import { useTasks } from "@/context/TaskContext";
 import { TaskCard } from "../components/TaskCard";
-import { connectDB } from "@/utils/mongoose";
-import Task from "@/models/Task";
+import { connectDB } from "../utils/mongoose";
+import Task from "../models/Task";
 
 async function loadTasksBD() {
   connectDB();

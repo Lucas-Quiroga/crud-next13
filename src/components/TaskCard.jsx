@@ -30,7 +30,7 @@ export const TaskCard = ({ task }) => {
         <p className="description">{task.description}</p>
         <p className="description">
           <span>Create at:</span>
-          {new Date(task.createdAt).toLocaleDateString()}
+          {/* {new Date(task.createdAt).toLocaleDateString()} */}
         </p>
         <div className="flex gap-2 justify-between">
           <button

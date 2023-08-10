@@ -5,11 +5,15 @@ import Link from "next/link";
 // import { useTasks } from "@/context/TaskContext";
 import Image from "next/image";
 import todoIcon from "../../public/todoIcon.jpg";
+import { useSession } from "next-auth/react";
 
 export const NavBar = () => {
   const router = useRouter();
   const params = useParams();
 
+  const { data: session } = useSession();
+
+  // console.log(status);
   // const { tasks } = useTasks();
 
   return (
@@ -25,6 +29,25 @@ export const NavBar = () => {
               alt="TodoIcon"
             />
           </Link>
+          <ul className="flex justify-between gap-x-2 text-white">
+            {session ? (
+              <li className="px-3 py-1">
+                <Link href="/dashboard/profile">Perfil</Link>
+              </li>
+            ) : (
+              <>
+                <li className="px-3 py-1">
+                  <Link href="/about">About</Link>
+                </li>
+                <li className="px-3 py-1">
+                  <Link href="/login">Login</Link>
+                </li>
+                <li className="px-3 py-1">
+                  <Link href="/register">Registro</Link>
+                </li>
+              </>
+            )}
+          </ul>
           <div className="flex md:order-2">
             <button
               type="button"
