@@ -3,16 +3,22 @@
 import { TaskCard } from "../components/TaskCard";
 import { connectDB } from "../utils/mongoose";
 import Task from "../models/Task";
+// import { useSession, signOut } from "next-auth/react";
 
 async function loadTasksBD() {
   connectDB();
   const tasks = await Task.find();
-  return tasks;
+  //elimina cualquier método toJSON y producir un objeto plano
+  return tasks.map((task) => JSON.parse(JSON.stringify(task)));
 }
 
 async function Page() {
   // const { tasks } = useTasks();
   const tasks = await loadTasksBD();
+  // console.log(tasks);
+
+  // const { data: session, status } = useSession();
+  // console.log(session, status);
 
   if (tasks.length <= 0) {
     return (

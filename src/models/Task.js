@@ -13,6 +13,10 @@ const taskSchema = new Schema(
       require: [true, "La descripción es requerida"],
       trim: true,
     },
+    createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,

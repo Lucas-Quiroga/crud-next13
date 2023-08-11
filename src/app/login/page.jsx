@@ -1,12 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const [error, setError] = useState("");
 
   const router = useRouter();
+
+  const { data: session, status } = useSession(); // Obtiene la sesión del usuario/ Estado para almacenar el _id
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -21,8 +23,10 @@ const LoginPage = () => {
 
     if (res?.error) return setError(res.error);
 
-    if (res?.ok) return router.push("/dashboard/profile");
-
+    if (res?.ok) {
+      return router.push("/dashboard/profile");
+    }
+    console.log("sesion:" + session, "status:" + status);
     console.log(res);
   }
 

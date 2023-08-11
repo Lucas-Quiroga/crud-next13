@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { toast } from "react-hot-toast";
+import { useSession } from "next-auth/react";
 
 const Page = () => {
   const [newTask, setNewTask] = useState({
@@ -11,6 +12,7 @@ const Page = () => {
 
   const router = useRouter();
   const params = useParams();
+  const { data: session } = useSession();
 
   async function getTaskDB() {
     try {
@@ -33,7 +35,10 @@ const Page = () => {
     try {
       const res = fetch("/api/tasks", {
         method: "POST",
-        body: JSON.stringify(newTask),
+        body: JSON.stringify({
+          ...newTask,
+          createdBy: { ...session?.user },
+        }), // Enviar el ID del usuario
         headers: {
           "Content-type": "application/json",
         },
