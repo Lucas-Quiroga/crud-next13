@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { useSession } from "next-auth/react";
+import { motion } from "framer-motion";
 
 const Page = () => {
   const [newTask, setNewTask] = useState({
@@ -84,19 +85,25 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-full">
-      <form
-        className="bg-gray-700 p-10 card"
-        style={{
-          borderRadius: "50px",
-          background: "#e1e0e0",
-          boxShadow: "20px 20px 60px #bebebe,-20px -20px 60px #ffffff",
-        }}
-        onSubmit={handleSubmit}
-      >
-        <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-black">
+    <motion.div
+      className="flex flex-col bg-white w-72 h-67 rounded-md py-4 px-6 border"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ y: 150, opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.3,
+        ease: [0, 0.71, 0.2, 1.01],
+        scale: {
+          type: "spring",
+          damping: 10,
+          stiffness: 100,
+          restDelta: 0.001,
+        },
+      }}
+    >
+      <form onSubmit={handleSubmit}>
+        <h3 className="text-center font-bold text-xl text-gray-800 pb-2">
           {params.id ? "EDIT TASK" : "NEW TASK"}
-        </h2>
+        </h3>{" "}
         <label className="block text-sm font-medium leading-6 text-black">
           Title
         </label>
@@ -129,7 +136,7 @@ const Page = () => {
           {params.id ? "Update" : "Create"}
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

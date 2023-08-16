@@ -1,19 +1,14 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-// import { useTasks } from "@/context/TaskContext";
 import { toast } from "react-hot-toast";
-import Link from "next/link";
 import "../styles/TaskCards.css";
 import { useSession } from "next-auth/react";
+import { motion } from "framer-motion";
 
 export const TaskCard = ({ task }) => {
   const router = useRouter();
-  // const { deleteTask } = useTasks();
   const { data: session } = useSession();
-  // console.log(session);
-  // console.log("soy task:", task.createdBy);
-  // console.log("soy session:", session?.user._id);
 
   function handleDeleteDB(id) {
     try {
@@ -27,42 +22,21 @@ export const TaskCard = ({ task }) => {
     }
   }
 
-  // if (session.user.) {
-
-  // }
-
-  // console.log(session.user._id);
-  // console.log(task.createdBy);
-
-  // if (!session) {
-  //   return;
-  // }
-  // if (session.user._id === task.createdBy) {
-  //   console.log("hay tareas del usuario");
-  // } else {
-  //   console.log("no hay tareas del usuario existe");
-  // }
-
   const isUserTask = session?.user._id === task.createdBy;
-  // Verificar si al menos una tarea pertenece al usuario actual
-  // const hasUserTasks = task.some(
-  //   (tasks) => tasks.createdBy._id === session?.user._id
-  // );
-
-  // if (session?.user._id === task.createdBy && null) {
-  //   return (
-  //     <section className="h-[calc(100vh-7rem)] flex items-center justify-center ">
-  //       <h1 className="text-black 7xl font-bold block">
-  //         No hay tareas del usuario creadas en la base de datos{" "}
-  //       </h1>
-  //     </section>
-  //   );
-  // }
 
   return (
     <>
       {isUserTask && (
-        <div className="flex justify-center md:flex-row cursor-pointer p-5 m-5 card">
+        <motion.div
+          className="flex justify-center md:flex-row cursor-pointer p-5 m-5 card "
+          initial={{ y: 150, opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.2,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+        >
           <div className="flex flex-col justify-between items-center w-full md:w-auto">
             <h1 className="title">📌 {task.title}</h1>
 
@@ -94,7 +68,7 @@ export const TaskCard = ({ task }) => {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </>
   );

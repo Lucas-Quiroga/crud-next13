@@ -1,6 +1,7 @@
 import { TaskCard } from "../components/TaskCard";
 import { connectDB } from "../utils/mongoose";
 import Task from "../models/Task";
+import Home from "../components/Home";
 
 async function loadTasksBD() {
   connectDB();
@@ -18,6 +19,7 @@ async function Page() {
         flexWrap: "wrap",
       }}
     >
+      <Home />
       {tasks.map((task) => (
         <TaskCard task={task} key={task._id} />
       ))}

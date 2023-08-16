@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.card{
-    background-color: red;
+body{
+    background: rgb(148,156,255);
+    background: radial-gradient(circle, rgba(148,156,255,1) 0%, rgba(148,187,233,1) 100%);
 }

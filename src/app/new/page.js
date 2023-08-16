@@ -57,7 +57,7 @@ const Page = ({ params }) => {
           Title
         </label>
         <input
-          className="py-3 px-4 mb-2 block focus:ouline-none w-full block w-full rounded-md border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          className="py-3 px-4 mb-2 focus:ouline-none block w-full rounded-md border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
           placeholder="Write a title"
           {...register("title", { required: true })}
         />
@@ -71,7 +71,7 @@ const Page = ({ params }) => {
           Description
         </label>
         <textarea
-          className="py-3 px-4 mb-2 block focus:ouline-none w-full block w-full rounded-md border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          className="py-3 px-4 mb-2 focus:ouline-none block w-full rounded-md border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
           placeholder="Write a description"
           {...register("description", { required: true })}
         />

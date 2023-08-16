@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import axios, { AxiosError } from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import "../../styles/FormPage.css";
 
 const RegisterPage = () => {
   const [error, setError] = useState();
@@ -29,7 +32,7 @@ const RegisterPage = () => {
         redirect: false,
       });
 
-      if (res?.ok) return router.push("/dashboard");
+      if (res?.ok) return router.push("/dashboard/profile");
 
       console.log(res);
     } catch (error) {
@@ -40,34 +43,44 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className="justify-center h-[calc(100vh-4rem)] flex items-center">
-      <form onSubmit={handleSubmit}>
-        {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
-        <h1 className="bg-black">SignUp</h1>
-        <input
-          type="text"
-          name="fullname"
-          placeholder="Write you fullname"
-          className="bg-zinc-800 px-4 py-2 block mb-2"
-        />
+    <motion.div className="form-box" animate={{ y: 150 }}>
+      <form onSubmit={handleSubmit} className="form bg-gray-700">
+        {error && (
+          <div className="bg-red-500 text-white p-2 mb-2 rounded-md">
+            {error}
+          </div>
+        )}
+        <span className="title">SignUp</span>
+        <span className="subtitle">Create a free account with your email.</span>
+        <div className="form-container">
+          <input
+            type="text"
+            name="fullname"
+            placeholder="Write you fullname"
+            className="input"
+          />
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Write you email"
-          className="bg-zinc-800 px-4 py-2 block mb-2"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Write you password"
-          className="bg-zinc-800 px-4 py-2 block mb-2"
-        />
-        <button type="submit" className="bg-indigo-500 px-4 py-2">
-          Register
-        </button>
+          <input
+            type="email"
+            name="email"
+            placeholder="Write you email"
+            className="input"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Write you password"
+            className="input"
+          />
+        </div>
+        <button type="submit">Sign up</button>
       </form>
-    </div>
+      <div className="form-section bg-gray-700">
+        <p>
+          Have an account? <Link href="/login">Log in</Link>{" "}
+        </p>
+      </div>
+    </motion.div>
   );
 };
 

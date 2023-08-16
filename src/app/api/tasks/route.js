@@ -12,12 +12,11 @@ export async function POST(req) {
   try {
     //recibir información del cliente
     const data = await req.json();
-
     //crear tarea
     const newTask = new Task(data);
     //guardarla en base de datos
     const saveTask = await newTask.save();
-    // console.log(saveTask);
+
     return NextResponse.json(saveTask);
   } catch (error) {
     return NextResponse.json(error.message, {
