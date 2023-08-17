@@ -17,7 +17,9 @@ const Page = () => {
 
   async function getTaskDB() {
     try {
-      const res = await fetch(`/api/tasks/${params.id}`);
+      const res = await fetch(
+        `https://nextjs-context-crud-kohl.vercel.app/api/tasks/${params.id}`
+      );
       const data = await res.json();
       setNewTask({
         title: data.title,
@@ -34,16 +36,19 @@ const Page = () => {
 
   async function createTask() {
     try {
-      const res = fetch("/api/tasks", {
-        method: "POST",
-        body: JSON.stringify({
-          ...newTask,
-          createdBy: { ...session?.user },
-        }), // Enviar el ID del usuario
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+      const res = fetch(
+        "https://nextjs-context-crud-kohl.vercel.app/api/tasks",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            ...newTask,
+            createdBy: { ...session?.user },
+          }), // Enviar el ID del usuario
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
 
       router.push("/");
       router.refresh();
@@ -54,13 +59,16 @@ const Page = () => {
 
   async function updateTaskDB() {
     try {
-      const res = await fetch(`/api/tasks/${params.id}`, {
-        method: "PUT",
-        body: JSON.stringify(newTask),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://nextjs-context-crud-kohl.vercel.app/api/tasks/${params.id}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(newTask),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
       const data = await res.json();
       router.push("/");
       router.refresh();
