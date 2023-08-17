@@ -87,7 +87,7 @@ const LoginPage = () => {
       </form>
       <div className="form-section bg-gray-700">
         <p>
-          Don't have an account? <Link href="/register">Sign up</Link>
+          Don t have an account? <Link href="/register">Sign up</Link>
         </p>
       </div>
     </motion.div>
