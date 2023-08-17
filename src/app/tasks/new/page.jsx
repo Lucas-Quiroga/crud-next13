@@ -18,7 +18,10 @@ const Page = () => {
   async function getTaskDB() {
     try {
       const res = await fetch(
-        `https://nextjs-context-crud-kohl.vercel.app/api/tasks/${params.id}`
+        `https://nextjs-context-crud-kohl.vercel.app/api/tasks/${params.id}`,
+        {
+          method: "GET",
+        }
       );
       const data = await res.json();
       setNewTask({
