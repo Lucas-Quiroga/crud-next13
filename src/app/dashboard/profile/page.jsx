@@ -8,11 +8,11 @@ const ProfilePage = () => {
 
   if (status === "loading") {
     return (
-      <div class="text-center mt-52">
+      <div className="text-center mt-52">
         <div role="status">
           <svg
             aria-hidden="true"
-            class="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-white"
+            className="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-white"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -26,14 +26,14 @@ const ProfilePage = () => {
               fill="currentFill"
             />
           </svg>
-          <span class="sr-only">Loading...</span>
+          <span className="sr-only">Loading...</span>
         </div>
       </div>
     );
   }
   return (
     <motion.div
-      class="flex flex-col bg-white w-72 h-60 rounded-md py-4 px-6 border"
+      className="flex flex-col bg-white w-72 h-60 rounded-md py-4 px-6 border"
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ y: 150, opacity: 1, scale: 1 }}
       transition={{
@@ -47,22 +47,24 @@ const ProfilePage = () => {
         },
       }}
     >
-      <h1 class="text-center font-bold text-xl text-gray-800 pb-1">Profile</h1>
-      <h3 class="text-base font-semibold text-gray-900">
+      <h1 className="text-center font-bold text-xl text-gray-800 pb-1">
+        Profile
+      </h1>
+      <h3 className="text-base font-semibold text-gray-900">
         {session?.user.fullname}
       </h3>
-      <p class="text-sm text-gray-500 pb-3">Email: {session?.user.email}</p>
-      <div class="flex gap-2 text-sm text-gray-500 border-b pb-1">
-        <p class="">Created at:</p>
+      <p className="text-sm text-gray-500 pb-3">Email: {session?.user.email}</p>
+      <div className="flex gap-2 text-sm text-gray-500 border-b pb-1">
+        <p className="">Created at:</p>
         <p>{session?.user.createdAt.slice(0, 10)}</p>
       </div>
-      <div class="flex gap-2 text-sm text-gray-500 border-b pb-1 pt-1">
-        <p class="">Status:</p>
+      <div className="flex gap-2 text-sm text-gray-500 border-b pb-1 pt-1">
+        <p className="">Status:</p>
         <p className="text-green-400">{status}</p>
       </div>
-      <div class="flex justify-around items-center py-3">
+      <div className="flex justify-around items-center py-3">
         <button
-          class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
           onClick={() => signOut()}
         >
           Logout

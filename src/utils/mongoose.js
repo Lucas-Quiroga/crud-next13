@@ -3,8 +3,8 @@
  */
 import { connect, connection } from "mongoose";
 
-const { MONGODB_URI } = process.env;
-if (!MONGODB_URI) {
+const { MONGODB_URI_DEPLOY } = process.env;
+if (!MONGODB_URI_DEPLOY) {
   throw new Error("MONGODB_URI must be defined");
 }
 
@@ -14,8 +14,7 @@ const conn = {
 
 export async function connectDB() {
   if (conn.isConnected) return;
-  const db = await connect(MONGODB_URI);
-  // console.log(db.connection.db.databaseName);
+  const db = await connect(MONGODB_URI_DEPLOY);
   conn.isConnected = db.connections[0].readyState;
 }
 
