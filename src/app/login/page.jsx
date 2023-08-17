@@ -68,9 +68,6 @@ const LoginPage = () => {
           </div>
         )}
         <span className="title">SignIn</span>
-        <span className="subtitle">
-          Login with your email account and password.{""}
-        </span>
 
         <div className="form-container">
           <input
