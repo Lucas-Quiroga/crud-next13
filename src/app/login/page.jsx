@@ -29,8 +29,9 @@ const LoginPage = () => {
     if (res?.ok) {
       return router.push("/dashboard/profile");
     }
-    console.log("sesion:" + session, "status:" + status);
-    console.log(res);
+    //datos
+    // console.log("sesion:" + session, "status:" + status);
+    // console.log(res);
   }
 
   if (status === "loading") {
