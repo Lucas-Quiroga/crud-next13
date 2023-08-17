@@ -18,11 +18,14 @@ const RegisterPage = () => {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const signupResponse = await axios.post("/api/auth/signup", {
-        email: formData.get("email"),
-        password: formData.get("password"),
-        fullname: formData.get("fullname"),
-      });
+      const signupResponse = await axios.post(
+        "https://nextjs-context-crud-kohl.vercel.app/api/auth/signup",
+        {
+          email: formData.get("email"),
+          password: formData.get("password"),
+          fullname: formData.get("fullname"),
+        }
+      );
 
       console.log(signupResponse);
 
