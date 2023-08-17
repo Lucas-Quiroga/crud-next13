@@ -3,6 +3,7 @@
  */
 import { connect, connection } from "mongoose";
 
+//connect
 const { MONGODB_URI_DEPLOY } = process.env;
 if (!MONGODB_URI_DEPLOY) {
   throw new Error("MONGODB_URI_DEPLOY must be defined");
