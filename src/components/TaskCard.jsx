@@ -25,9 +25,9 @@ export const TaskCard = ({ task }) => {
 
   const isUserTask = session?.user._id === task.createdBy;
 
-  useEffect(() => {
-    connectDB();
-  }, [task]);
+  // useEffect(() => {
+  //   connectDB();
+  // }, [task]);
 
   return (
     <>
