@@ -12,7 +12,7 @@ if (!MONGODB_URI_DEPLOY) {
 const conn = {
   isConnected: false,
 };
-
+//CHANGE
 export async function connectDB() {
   if (conn.isConnected) return;
   const db = await connect(MONGODB_URI_DEPLOY);
