@@ -15,7 +15,9 @@ const conn = {
 //CHANGE
 export async function connectDB() {
   if (conn.isConnected) return;
-  const db = await connect(MONGODB_URI_DEPLOY);
+  const db = await connect(
+    "mongodb+srv://LucasQuiroga:project123@cluster.hnfmusg.mongodb.net/nextmongocrud?retryWrites=true&w=majority"
+  );
   conn.isConnected = db.connections[0].readyState;
 }
 
