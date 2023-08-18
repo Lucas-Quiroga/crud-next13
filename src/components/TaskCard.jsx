@@ -1,10 +1,11 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import "../styles/TaskCards.css";
 import { useSession } from "next-auth/react";
 import { motion } from "framer-motion";
+import { connectDB } from "../utils/mongoose";
 
 export const TaskCard = ({ task }) => {
   const router = useRouter();
@@ -23,6 +24,10 @@ export const TaskCard = ({ task }) => {
   }
 
   const isUserTask = session?.user._id === task.createdBy;
+
+  useEffect(() => {
+    connectDB();
+  }, [task]);
 
   return (
     <>
