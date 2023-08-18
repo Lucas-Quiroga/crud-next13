@@ -3,8 +3,10 @@
  */
 import { connect, connection } from "mongoose";
 
+MONGODB_URI_DEPLOY =
+  "mongodb+srv://LucasQuiroga:project123@cluster.hnfmusg.mongodb.net/nextmongocrud?retryWrites=true&w=majority";
 //connect
-const { MONGODB_URI_DEPLOY } = process.env;
+// const { MONGODB_URI_DEPLOY } = process.env;
 if (!MONGODB_URI_DEPLOY) {
   throw new Error("MONGODB_URI_DEPLOY must be defined");
 }
