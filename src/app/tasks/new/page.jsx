@@ -17,9 +17,12 @@ const Page = () => {
 
   async function getTaskDB() {
     try {
-      const res = await fetch(`/api/tasks/${params.id}`, {
-        method: "GET",
-      });
+      const res = await fetch(
+        `https://crud-next13.vercel.app/api/tasks/${params.id}`,
+        {
+          method: "GET",
+        }
+      );
       const data = await res.json();
       setNewTask({
         title: data.title,
@@ -36,7 +39,7 @@ const Page = () => {
 
   async function createTask() {
     try {
-      const res = fetch("/api/tasks", {
+      const res = fetch("https://crud-next13.vercel.app/api/tasks", {
         method: "POST",
         body: JSON.stringify({
           ...newTask,
@@ -56,13 +59,16 @@ const Page = () => {
 
   async function updateTaskDB() {
     try {
-      const res = await fetch(`/api/tasks/${params.id}`, {
-        method: "PUT",
-        body: JSON.stringify(newTask),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://crud-next13.vercel.app/api/tasks/${params.id}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(newTask),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
       const data = await res.json();
       router.push("/");
       router.refresh();
