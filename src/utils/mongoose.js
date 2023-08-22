@@ -3,10 +3,11 @@
  */
 import { connect, connection } from "mongoose";
 
-//connect
-const { MONGODB_URI } = process.env;
-if (!MONGODB_URI) {
-  throw new Error("MONGODB_URI must be defined");
+// const { MONGODB_URI_DEPLOY } = process.env;
+
+const URI = "mongodb://127.0.0.1:27017/nextmongocrud";
+if (!URI) {
+  throw new Error("MONGODB_URI_DEPLOY must be defined");
 }
 
 const conn = {
@@ -15,7 +16,7 @@ const conn = {
 //CHANGE
 export async function connectDB() {
   if (conn.isConnected) return;
-  const db = await connect("mongodb://127.0.0.1:27017/nextmongocrud");
+  const db = await connect(URI);
   conn.isConnected = db.connections[0].readyState;
 }
 
