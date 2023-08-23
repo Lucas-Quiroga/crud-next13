@@ -39,7 +39,7 @@ const Page = () => {
 
   async function createTask() {
     try {
-      await fetch("/api/tasks", {
+      const res = await fetch("/api/tasks", {
         method: "POST",
         body: JSON.stringify({
           ...newTask,
@@ -49,8 +49,12 @@ const Page = () => {
           "Content-type": "application/json",
         },
       });
-      router.push("/");
-      router.refresh();
+      if (res.ok) {
+        router.push("/");
+        router.refresh();
+      } else {
+        throw new Error("Failed to create a task");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -65,6 +69,9 @@ const Page = () => {
           "Content-type": "application/json",
         },
       });
+      if (!res.ok) {
+        throw new Error("Failed to update tasks");
+      }
       router.push("/");
       router.refresh();
     } catch (error) {

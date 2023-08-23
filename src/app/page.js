@@ -1,5 +1,5 @@
 import { TaskCard } from "../components/TaskCard";
-import { GET as loadTasksBD } from "../app/api/tasks/route";
+// import { GET as loadTasksBD } from "../app/api/tasks/route";
 // import Task from "../models/Task";
 import Home from "../components/Home";
 
@@ -9,11 +9,27 @@ import Home from "../components/Home";
 //   return tasks.map((task) => JSON.parse(JSON.stringify(task)));
 // }
 
-async function Page() {
-  // const tasks = await loadTasksBD();
+const loadTasksBD = async () => {
+  try {
+    const res = await fetch("/api/tasks", {
+      cache: "no-store",
+    });
 
-  const tasksResponse = await loadTasksBD(); // Llama a la función GET
-  const tasks = await tasksResponse.json(); // Convierte la respuesta a formato JSON
+    if (!res.ok) {
+      throw new Error("Failed to fetch tasks");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log("Error loading tasks: ", error);
+  }
+};
+
+async function Page() {
+  const { tasks } = await loadTasksBD();
+
+  // const tasksResponse = await loadTasksBD(); // Llama a la función GET
+  // const tasks = await tasksResponse.json(); // Convierte la respuesta a formato JSON
 
   // console.log("soy la tarea", tasks);
   return (
