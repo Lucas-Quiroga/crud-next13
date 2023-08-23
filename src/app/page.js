@@ -11,7 +11,7 @@ import Home from "../components/Home";
 
 const loadTasksBD = async () => {
   try {
-    const res = await fetch("/api/tasks", {
+    const res = await fetch("https://crud-next13.vercel.app/api/tasks", {
       method: "GET",
       cache: "no-store",
     });
