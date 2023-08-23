@@ -12,7 +12,7 @@ export const TaskCard = ({ task }) => {
 
   async function handleDeleteDB(id) {
     try {
-      await fetch(`/api/tasks/${id}`, {
+      await fetch(`https://crud-next13.vercel.app/api/tasks/${id}`, {
         method: "DELETE",
       });
       router.push("/");
