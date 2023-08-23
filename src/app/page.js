@@ -12,6 +12,7 @@ import Home from "../components/Home";
 const loadTasksBD = async () => {
   try {
     const res = await fetch("/api/tasks", {
+      method: "GET",
       cache: "no-store",
     });
 
