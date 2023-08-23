@@ -10,22 +10,20 @@ export const TaskCard = ({ task }) => {
   const router = useRouter();
   const { data: session } = useSession();
 
-  function handleDeleteDB(id) {
+  async function handleDeleteDB(id) {
     try {
-      fetch(`https://crud-next13.vercel.app/api/tasks/${id}`, {
+      await fetch(`https://crud-next13.vercel.app/api/tasks/${id}`, {
         method: "DELETE",
       });
       router.push("/");
       router.refresh();
+      router.reload();
     } catch (error) {
       console.log(error);
     }
   }
 
   const isUserTask = session?.user._id === task.createdBy;
-
-  //   connectDB();
-  // }, [task]);
 
   return (
     <>

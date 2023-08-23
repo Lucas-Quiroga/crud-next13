@@ -1,6 +1,6 @@
 import { TaskCard } from "../components/TaskCard";
 import { GET as loadTasksBD } from "../app/api/tasks/route";
-import Task from "../models/Task";
+// import Task from "../models/Task";
 import Home from "../components/Home";
 
 // async function loadTasksBD() {
@@ -10,6 +10,8 @@ import Home from "../components/Home";
 // }
 
 async function Page() {
+  // const tasks = await loadTasksBD();
+
   const tasksResponse = await loadTasksBD(); // Llama a la función GET
   const tasks = await tasksResponse.json(); // Convierte la respuesta a formato JSON
 

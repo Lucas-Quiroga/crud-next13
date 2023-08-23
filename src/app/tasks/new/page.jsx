@@ -39,7 +39,7 @@ const Page = () => {
 
   async function createTask() {
     try {
-      const res = fetch("https://crud-next13.vercel.app/api/tasks", {
+      const res = await fetch("https://crud-next13.vercel.app/api/tasks", {
         method: "POST",
         body: JSON.stringify({
           ...newTask,
@@ -82,7 +82,7 @@ const Page = () => {
     if (!params.id) {
       await createTask();
     } else {
-      updateTaskDB();
+      await updateTaskDB();
     }
   }
 
