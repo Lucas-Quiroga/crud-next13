@@ -17,7 +17,6 @@ export const TaskCard = ({ task }) => {
       });
       router.push("/");
       router.refresh();
-      window.location.reload();
     } catch (error) {
       console.log(error);
     }

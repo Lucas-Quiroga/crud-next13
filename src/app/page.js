@@ -15,6 +15,7 @@ async function Page() {
   const tasksResponse = await loadTasksBD(); // Llama a la función GET
   const tasks = await tasksResponse.json(); // Convierte la respuesta a formato JSON
 
+  console.log("soy la tarea", tasks);
   return (
     <div
       className="flex justify-center items-center"

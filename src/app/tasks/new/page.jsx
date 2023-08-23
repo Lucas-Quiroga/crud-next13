@@ -49,7 +49,6 @@ const Page = () => {
           "Content-type": "application/json",
         },
       });
-
       router.push("/");
       router.refresh();
     } catch (error) {
@@ -68,7 +67,6 @@ const Page = () => {
       });
       router.push("/");
       router.refresh();
-      window.location.reload();
     } catch (error) {
       console.log(error);
     }
