@@ -4,7 +4,8 @@ This project is a full-stack application that includes user authentication, regi
 
 ## Preview image 👁
 
-<!-- ![ScreenShot](/app-img.jpg) -->
+![ScreenShot](/public/app1.jpg)
+![ScreenShot](/public/app2.jpg)
 
 ## Deployment 📦
 
