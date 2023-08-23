@@ -18,7 +18,11 @@ export const NavBar = () => {
     >
       <nav className="bg-gray-700 dark:bg-gray-700 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <Link href="/" className="flex items-center">
+          <Link
+            href="/"
+            className="flex items-center"
+            style={{ gap: "0.5rem" }}
+          >
             <Image
               src={todoIcon}
               style={{ borderRadius: 100 }}
@@ -26,7 +30,7 @@ export const NavBar = () => {
               height={30}
               alt="TodoIcon"
             />
-            <span className="text-white">HOME</span>
+            <span className="text-white">Home</span>
           </Link>
           <ul className="flex justify-between gap-x-2 text-white">
             {session ? (

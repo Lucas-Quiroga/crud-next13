@@ -29,7 +29,7 @@ export const TaskCard = ({ task }) => {
       {isUserTask && (
         <motion.div
           className="flex justify-center md:flex-row cursor-pointer p-5 m-5 card "
-          initial={{ y: 50, opacity: 0, scale: 0.5 }}
+          initial={{ y: 30, opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
             duration: 0.5,
