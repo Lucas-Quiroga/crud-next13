@@ -21,6 +21,7 @@ const Page = () => {
         `https://crud-next13.vercel.app/api/tasks/${params.id}`,
         {
           method: "GET",
+          cache: "no-store",
         }
       );
       const data = await res.json();
@@ -48,6 +49,7 @@ const Page = () => {
         headers: {
           "Content-type": "application/json",
         },
+        cache: "no-store",
       });
       router.push("/");
       router.refresh();
@@ -64,6 +66,7 @@ const Page = () => {
         headers: {
           "Content-type": "application/json",
         },
+        cache: "no-store",
       });
       router.push("/");
       router.refresh();
