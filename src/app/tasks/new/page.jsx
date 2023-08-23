@@ -39,7 +39,7 @@ const Page = () => {
 
   async function createTask() {
     try {
-      const res = await fetch("https://crud-next13.vercel.app/api/tasks", {
+      await fetch("/api/tasks", {
         method: "POST",
         body: JSON.stringify({
           ...newTask,
@@ -59,19 +59,16 @@ const Page = () => {
 
   async function updateTaskDB() {
     try {
-      const res = await fetch(
-        `https://crud-next13.vercel.app/api/tasks/${params.id}`,
-        {
-          method: "PUT",
-          body: JSON.stringify(newTask),
-          headers: {
-            "Content-type": "application/json",
-          },
-        }
-      );
-      const data = await res.json();
+      await fetch(`/api/tasks/${params.id}`, {
+        method: "PUT",
+        body: JSON.stringify(newTask),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
       router.push("/");
       router.refresh();
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
