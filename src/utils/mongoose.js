@@ -5,7 +5,6 @@ import { connect, connection } from "mongoose";
 
 const { MONGODB_URI_DEPLOY } = process.env;
 
-const URI = "mongodb://127.0.0.1:27017/nextmongocrud";
 if (!MONGODB_URI_DEPLOY) {
   throw new Error("MONGODB_URI_DEPLOY must be defined");
 }

@@ -29,7 +29,7 @@ export const TaskCard = ({ task }) => {
       {isUserTask && (
         <motion.div
           className="flex justify-center md:flex-row cursor-pointer p-5 m-5 card "
-          initial={{ y: 150, opacity: 0, scale: 0.5 }}
+          initial={{ y: 50, opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
             duration: 0.5,
@@ -42,7 +42,7 @@ export const TaskCard = ({ task }) => {
 
             <p className="description">{task.description}</p>
             <p className="description">
-              <span>Create at:</span>
+              <span>Create by: </span>
               {session.user.fullname}
             </p>
             <div className="flex gap-2 justify-between">

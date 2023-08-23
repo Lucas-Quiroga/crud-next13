@@ -1,13 +1,5 @@
 import { TaskCard } from "../components/TaskCard";
-// import { GET as loadTasksBD } from "../app/api/tasks/route";
-// import Task from "../models/Task";
 import Home from "../components/Home";
-
-// async function loadTasksBD() {
-//   connectDB();
-//   const tasks = await Task.find();
-//   return tasks.map((task) => JSON.parse(JSON.stringify(task)));
-// }
 
 const loadTasksBD = async () => {
   try {
@@ -29,10 +21,6 @@ const loadTasksBD = async () => {
 async function Page() {
   const tasks = await loadTasksBD();
 
-  // const tasksResponse = await loadTasksBD(); // Llama a la función GET
-  // const tasks = await tasksResponse.json(); // Convierte la respuesta a formato JSON
-
-  // console.log("soy la tarea", tasks);
   return (
     <div
       className="flex justify-center items-center"
