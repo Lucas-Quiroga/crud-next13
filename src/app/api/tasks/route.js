@@ -3,7 +3,7 @@ import { connectDB } from "../../../utils/mongoose";
 import Task from "../../../models/Task";
 
 export async function GET() {
-  connectDB();
+  await connectDB();
   const tasks = await Task.find();
   return NextResponse.json(tasks);
 }

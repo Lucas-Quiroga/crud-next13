@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import "../styles/TaskCards.css";
@@ -7,6 +7,8 @@ import { useSession } from "next-auth/react";
 import { motion } from "framer-motion";
 
 export const TaskCard = ({ task }) => {
+  const [newTasksReload, setNewTasksReload] = useState([task]);
+
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -14,8 +16,6 @@ export const TaskCard = ({ task }) => {
     try {
       await fetch(`/api/tasks/${id}`, {
         method: "DELETE",
-        cache: "no-store",
-        next: { revalidate: 3 },
       });
       router.push("/");
       router.refresh();
@@ -26,9 +26,17 @@ export const TaskCard = ({ task }) => {
 
   const isUserTask = session?.user._id === task.createdBy;
 
+  if (!isUserTask) {
+    //si no existe que no me devuelva nada
+    return;
+  } else {
+    //si existe o hay una nueva actualización
+    setNewTasksReload([...newTasksReload, isUserTask]);
+  }
+
   return (
     <>
-      {isUserTask && (
+      {newTasksReload && (
         <motion.div
           className="flex justify-center md:flex-row cursor-pointer p-5 m-5 card "
           initial={{ y: 150, opacity: 0, scale: 0.5 }}
