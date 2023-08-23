@@ -27,7 +27,7 @@ const loadTasksBD = async () => {
 };
 
 async function Page() {
-  const { tasks } = await loadTasksBD();
+  const tasks = await loadTasksBD();
 
   // const tasksResponse = await loadTasksBD(); // Llama a la función GET
   // const tasks = await tasksResponse.json(); // Convierte la respuesta a formato JSON
