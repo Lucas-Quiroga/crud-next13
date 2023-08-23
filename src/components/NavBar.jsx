@@ -26,7 +26,7 @@ export const NavBar = () => {
               height={30}
               alt="TodoIcon"
             />
-            HOME
+            <span className="text-white">HOME</span>
           </Link>
           <ul className="flex justify-between gap-x-2 text-white">
             {session ? (
