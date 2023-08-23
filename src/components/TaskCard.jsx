@@ -15,6 +15,7 @@ export const TaskCard = ({ task }) => {
       await fetch(`/api/tasks/${id}`, {
         method: "DELETE",
         cache: "no-store",
+        next: { revalidate: 3 },
       });
       router.push("/");
       router.refresh();

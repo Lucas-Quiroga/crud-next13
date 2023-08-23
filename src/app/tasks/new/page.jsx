@@ -22,6 +22,7 @@ const Page = () => {
         {
           method: "GET",
           cache: "no-store",
+          next: { revalidate: 3 },
         }
       );
       const data = await res.json();
@@ -50,6 +51,7 @@ const Page = () => {
           "Content-type": "application/json",
         },
         cache: "no-store",
+        next: { revalidate: 3 },
       });
       router.push("/");
       router.refresh();
@@ -67,6 +69,7 @@ const Page = () => {
           "Content-type": "application/json",
         },
         cache: "no-store",
+        next: { revalidate: 3 },
       });
       router.push("/");
       router.refresh();
